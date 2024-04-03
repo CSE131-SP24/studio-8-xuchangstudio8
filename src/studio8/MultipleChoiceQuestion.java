@@ -2,14 +2,23 @@ package studio8;
 
 public class MultipleChoiceQuestion extends Question {
 	
+	private String[] answerChoices;
+	
 	public MultipleChoiceQuestion(String prompt, String answer, int points, String[] choices) {
 		//FIXME
-		
+		super(prompt, answer, points);
+		answerChoices = choices;
 		//Call the super class constructor, then create and set
 		//instance variables for any values that aren't handled
 		//by the base class
 	}
-	
+	public String getAnswerChoices(int index) {
+		return answerChoices[index];
+	}
+	public void setAnswerChoices(String choice, int index) {
+		answerChoices[index] = choice;
+	}
+	@Override
 	public void displayPrompt() {
 		//FIXME
 		
@@ -24,6 +33,10 @@ public class MultipleChoiceQuestion extends Question {
 		 * N. ChoiceN
 		 */
 		//
+		super.displayPrompt();
+		for (int index = 0; index < answerChoices.length; index++) {
+			System.out.println(index+1 + ". " + this.getAnswerChoices(index));
+		}		
 	}
 	
 	public static void main(String[] args) {
